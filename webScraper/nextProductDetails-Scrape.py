@@ -6,7 +6,7 @@ import json
 
 def get_html_content(url):
     """
-    Verilen URL'den HTML içeriğini getiren fonksiyon.
+    Function to combine HTML from given URL.
     """
     if url:
         headers = {
@@ -22,7 +22,7 @@ def get_html_content(url):
 
 def extract_image_urls(html_content):
     """
-    HTML içeriğinden görüntü URL'lerini çıkaran fonksiyon.
+    Function that extracts image URLs from HTML content.
     """
     soup = BeautifulSoup(html_content, 'html.parser')
     image_urls = []
@@ -46,7 +46,7 @@ def extract_image_urls(html_content):
 
 def extract_default_item_colour(url):
     """
-    Verilen URL'den varsayılan ürün rengini çıkaran fonksiyon.
+    Function that extracts the default product color from the given URL.
     """
     try:
         response = requests.get(url)
@@ -65,7 +65,7 @@ def extract_default_item_colour(url):
 
 def extract_script_data(sdata):
     """
-    JSON verilerinden ürün bilgilerini çıkaran fonksiyon.
+    Function that extracts product information from JSON data.
     """
     if sdata:
         try:
@@ -98,7 +98,7 @@ def extract_script_data(sdata):
 
 def scrape_url(url):
     """
-    Verilen URL'den veri çıkaran ana fonksiyon.
+    The main function that extracts data from the given URL.
     """
     try:
         html_content = get_html_content(url)
@@ -143,7 +143,7 @@ def scrape_url(url):
 
 def process_style_info(style_tag, html_content):
     """
-    Stil bilgisini işleyen fonksiyon.
+    Function that processes style information.
     """
     price_tag = style_tag.find('div', class_='nowPrice')
     price = price_tag.span.text if price_tag else "Price not available"
@@ -174,7 +174,7 @@ def process_style_info(style_tag, html_content):
 
 def process_output_data(style_info, extracted_data, image_url, description, image_info, default_color, url):
     """
-    Çıktı verisini işleyen fonksiyon.
+    The function that processes the output data.
     """
     output_data = []
     for size, details in style_info["stock_details"].items():
@@ -227,9 +227,9 @@ def process_output_data(style_info, extracted_data, image_url, description, imag
 
 def main():
     """
-    Ana program akışı.
+    Main program flow.
     """
-    folder_path = "C:/Users/msı/jupyterNOTEBOOK/z"
+    folder_path = "C:/Users/msı/jupyterNOTEBOOK/.."
     excel_files = [file for file in os.listdir(folder_path) if file.endswith(".xlsx")]
 
     for excel_file in excel_files:
