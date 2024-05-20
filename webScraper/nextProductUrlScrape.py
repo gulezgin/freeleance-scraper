@@ -42,12 +42,12 @@ def get_product_urls(base_url, max_pages=300, max_workers=80):
             all_product_urls.update(product_urls)
     return list(all_product_urls)
 
-base_url = "https://www.next.co.uk/shop/gender-women-productaffiliation-sportswear/feat-newin"
+base_url = "https://www.next.co.uk/shop/..."
 product_urls = get_product_urls(base_url)
 
 if product_urls:
     df = pd.DataFrame(product_urls, columns=["Product URLs"])
-    df.to_excel("sports-WomansSPORTSWEAR-New In-product_urls.xlsx", index=False)
+    df.to_excel(".....xlsx", index=False)
     print("Product URLs saved to product_urls.xlsx")
 else:
     print("No product URLs found.")
